@@ -1,0 +1,751 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #fffffa;
+    --primary-text: #005229;
+    --secondary-accent: #8b7355;
+    --accent-light: #d4c4b0;
+    --border-color: #e8e8e0;
+    --text-light: #666;
+    --white: #ffffff;
+    --shadow: rgba(0, 82, 41, 0.08);
+    --shadow-hover: rgba(0, 82, 41, 0.12);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Sorts Mill Goudy', 'EB Garamond', 'Garamond', 'Times New Roman', serif;
+    color: var(--primary-text);
+    line-height: 1.7;
+    background-color: var(--bg-color);
+    font-size: 18px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Sorts Mill Goudy', 'EB Garamond', 'Garamond', 'Times New Roman', serif;
+    font-weight: 400;
+    color: var(--primary-text);
+}
+
+/* Base Link Styles - Applies to all links unless overridden */
+a {
+    color: var(--primary-text);
+    text-decoration: underline;
+    text-decoration-color: var(--primary-text);
+    text-underline-offset: 3px;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-accent);
+    text-decoration-color: var(--secondary-accent);
+}
+
+a:visited {
+    color: var(--primary-text);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-alt {
+    background-color: var(--white);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary-text);
+    position: relative;
+    padding-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background-color: var(--primary-text);
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.2rem 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: 'Sorts Mill Goudy', 'EB Garamond', 'Garamond', 'Times New Roman', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--primary-text);
+    letter-spacing: 0.5px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--primary-text);
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--primary-text);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-text);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* RSVP Link Highlight */
+.nav-link[href="#rsvp"] {
+    background-color: var(--primary-text);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-link[href="#rsvp"]::after {
+    display: none;
+}
+
+.nav-link[href="#rsvp"]:hover {
+    background-color: #003d1f;
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 82, 41, 0.2);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 2px;
+    background: var(--primary-text);
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+    text-align: center;
+    color: var(--primary-text);
+    padding: 120px 30px 80px;
+    margin-top: 70px;
+}
+
+.hero-content {
+    max-width: 700px;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: var(--primary-text);
+    letter-spacing: 1px;
+    line-height: 1.3;
+}
+
+.hero-divider {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.decorative-tree {
+    max-width: 80px;
+    height: auto;
+    opacity: 0.6;
+}
+
+.hero-date {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-text);
+    letter-spacing: 0.5px;
+}
+
+.hero-time {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.hero-location {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.hero-rsvp-note {
+    font-size: 1rem;
+    color: var(--primary-text);
+    margin-top: 3.5rem;
+    line-height: 1.2;
+}
+
+.hero-rsvp-main {
+    font-size: 1.15rem;
+    font-weight: 500;
+    display: block;
+    line-height: 1.1;
+    margin-bottom: -0.3rem;
+}
+
+.hero-rsvp-sub {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-light);
+    display: block;
+    line-height: 1.1;
+    margin-top: -0.1rem;
+}
+
+.hero-rsvp-link {
+    color: var(--primary-text);
+    text-decoration: underline;
+    text-decoration-color: var(--primary-text);
+    text-underline-offset: 3px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.hero-rsvp-link:hover {
+    color: var(--secondary-accent);
+    text-decoration-color: var(--secondary-accent);
+}
+
+/* Details Section */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.detail-card {
+    background: var(--white);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.detail-card:hover {
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.detail-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-text);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.detail-card p {
+    color: var(--primary-text);
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.detail-note {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* Schedule Section */
+.schedule-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.schedule-day {
+    margin-bottom: 3rem;
+}
+
+.day-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-text);
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.schedule-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.schedule-item {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: var(--white);
+    border-left: 3px solid var(--primary-text);
+    transition: all 0.3s ease;
+}
+
+.schedule-item:hover {
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.schedule-time {
+    flex: 0 0 120px;
+    font-weight: 500;
+    color: var(--primary-text);
+    font-size: 1.1rem;
+    padding-top: 0.2rem;
+}
+
+.schedule-content {
+    flex: 1;
+}
+
+.schedule-content h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-text);
+}
+
+.schedule-content p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Lodging Section */
+.lodging-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.lodging-section {
+    margin-bottom: 3rem;
+}
+
+.lodging-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-text);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.lodging-section p {
+    color: var(--primary-text);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.lodging-note {
+    background: var(--white);
+    padding: 1rem 1.5rem;
+    border-left: 3px solid var(--primary-text);
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.lodging-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lodging-image-wrapper {
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    transition: all 0.3s ease;
+    aspect-ratio: 4 / 3;
+    position: relative;
+}
+
+.lodging-image-wrapper:hover {
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.lodging-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.image-placeholder {
+    aspect-ratio: 4/3;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+.lodging-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.lodging-option {
+    background: var(--white);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.lodging-option h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-text);
+}
+
+.lodging-option p {
+    color: var(--primary-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.lodging-distance {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* Transportation Section */
+.transportation-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.transportation-section {
+    margin-bottom: 2.5rem;
+}
+
+.transportation-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-text);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.transportation-section p {
+    color: var(--primary-text);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.transportation-note {
+    background: var(--white);
+    padding: 1rem 1.5rem;
+    border-left: 3px solid var(--primary-text);
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+/* Things to Do Section */
+.things-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.things-section {
+    margin-bottom: 3rem;
+}
+
+.things-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-text);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.things-section p {
+    color: var(--primary-text);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.things-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.things-list li {
+    color: var(--primary-text);
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.7;
+}
+
+.things-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--primary-text);
+}
+
+/* RSVP Section */
+.rsvp-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--primary-text);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+
+.rsvp-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.google-form {
+    width: 100%;
+    min-height: 1200px;
+    border: none;
+}
+
+/* Footer */
+.footer {
+    padding: 3rem 0;
+    background: var(--white);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--primary-text);
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+}
+
+.footer a {
+    /* Inherits base link styles, but with subtle underline color */
+    text-decoration-color: var(--border-color);
+}
+
+.footer a:hover {
+    text-decoration-color: var(--primary-text);
+}
+
+.footer-note {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-top: 1rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--bg-color);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        border-bottom: 1px solid var(--border-color);
+        padding: 2rem 0;
+        gap: 1rem;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-link[href="#rsvp"] {
+        margin: 0.5rem auto;
+        display: inline-block;
+        width: auto;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    .hero {
+        min-height: 60vh;
+        padding: 100px 20px 60px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-date {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .schedule-time {
+        flex: none;
+    }
+
+    .lodging-images {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+
+    .lodging-options {
+        grid-template-columns: 1fr;
+    }
+
+    .rsvp-form-container {
+        padding: 1rem;
+    }
+
+    .google-form {
+        min-height: 1000px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .nav-logo {
+        font-size: 1.2rem;
+    }
+}
