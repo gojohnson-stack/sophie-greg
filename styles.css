@@ -47,7 +47,7 @@ h1, h2, h3, h4 {
     pointer-events: none;
     object-fit: cover;
     object-position: left bottom;
-    /* Mobile Safari fix - JavaScript will override height to extend behind URL bar */
+    display: block;
 }
 
 /* Base Link Styles - Applies to all links unless overridden */
@@ -667,6 +667,10 @@ a:visited {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .left-border-decoration {
+        display: none;
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
