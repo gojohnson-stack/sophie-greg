@@ -112,6 +112,38 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// Fix for mobile Safari viewport height changes
+// This ensures the left border decoration stays at the bottom when URL bar appears/disappears
+function fixMobileSafariViewport() {
+    const leftBorder = document.querySelector('.left-border-decoration');
+    if (!leftBorder) return;
+    
+    function setHeight() {
+        // Use window.innerHeight which accounts for browser UI
+        const vh = window.innerHeight * 0.7;
+        leftBorder.style.height = vh + 'px';
+    }
+    
+    // Set initial height
+    setHeight();
+    
+    // Update on resize and orientation change
+    window.addEventListener('resize', setHeight);
+    window.addEventListener('orientationchange', setHeight);
+    
+    // For iOS Safari, also listen to scroll events which can trigger viewport changes
+    let lastHeight = window.innerHeight;
+    window.addEventListener('scroll', () => {
+        if (Math.abs(window.innerHeight - lastHeight) > 50) {
+            lastHeight = window.innerHeight;
+            setHeight();
+        }
+    }, { passive: true });
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', fixMobileSafariViewport);
+
 // Console welcome message
 console.log('%c💚 Sophie & Greg\'s Wedding 💚', 'color: #005229; font-size: 18px; font-weight: bold;');
 console.log('%cMade with care for our special day', 'color: #8b7355; font-size: 14px;');

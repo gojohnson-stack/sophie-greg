@@ -42,6 +42,7 @@ h1, h2, h3, h4 {
     left: 0;
     bottom: 0;
     height: 70vh;
+    height: 70dvh; /* Dynamic viewport height for mobile browsers - accounts for browser UI */
     width: auto;
     z-index: 9999;
     pointer-events: none;
