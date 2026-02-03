@@ -112,6 +112,33 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// Hide tree decorations on mobile devices
+function hideTreesOnMobile() {
+    const leftTree = document.querySelector('.left-border-decoration');
+    const rightTree = document.querySelector('.right-border-decoration');
+    
+    if (!leftTree || !rightTree) return;
+    
+    // Detect mobile devices
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                     (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) ||
+                     ('ontouchstart' in window);
+    
+    if (isMobile) {
+        leftTree.style.display = 'none';
+        rightTree.style.display = 'none';
+    }
+}
+
+// Run on page load and resize
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hideTreesOnMobile);
+} else {
+    hideTreesOnMobile();
+}
+
+window.addEventListener('resize', hideTreesOnMobile);
+
 // Console welcome message
 console.log('%c💚 Sophie & Greg\'s Wedding 💚', 'color: #005229; font-size: 18px; font-weight: bold;');
 console.log('%cMade with care for our special day', 'color: #8b7355; font-size: 14px;');

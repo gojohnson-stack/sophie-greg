@@ -45,11 +45,14 @@ h1, h2, h3, h4 {
     bottom: 0;
     height: var(--tree-decoration-height);
     width: auto;
-    z-index: 9999;
+    z-index: 1;
     pointer-events: none;
     object-fit: cover;
     object-position: left bottom;
     display: block;
+    /* iOS Safari fix - ensure proper positioning */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 /* RIGHT BORDER DECORATION - Remove this entire .right-border-decoration rule to remove the right border */
@@ -60,11 +63,14 @@ h1, h2, h3, h4 {
     bottom: 0;
     height: var(--tree-decoration-height);
     width: auto;
-    z-index: 9999;
+    z-index: 1;
     pointer-events: none;
     object-fit: cover;
     object-position: right bottom;
     display: block;
+    /* iOS Safari fix - ensure proper positioning */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 /* Base Link Styles - Applies to all links unless overridden */
@@ -713,13 +719,7 @@ a:visited {
 }
 
 /* Responsive Design */
-/* Hide tree decorations on small screens - adjust the 1200px value to change when they hide */
-@media (max-width: 1000px) {
-    .left-border-decoration,
-    .right-border-decoration {
-        display: none;
-    }
-}
+/* Tree decorations are hidden on mobile devices via JavaScript */
 
 @media (max-width: 768px) {
 
