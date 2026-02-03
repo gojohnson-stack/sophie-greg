@@ -40,14 +40,14 @@ h1, h2, h3, h4 {
 .left-border-decoration {
     position: fixed;
     left: 0;
-    bottom: env(safe-area-inset-bottom, 0);
+    bottom: 0;
     height: 70vh;
     width: auto;
     z-index: 9999;
     pointer-events: none;
     object-fit: cover;
     object-position: left bottom;
-    /* Mobile Safari fix - JavaScript will override height and bottom position */
+    /* Mobile Safari fix - JavaScript will override height to extend behind URL bar */
 }
 
 /* Base Link Styles - Applies to all links unless overridden */
