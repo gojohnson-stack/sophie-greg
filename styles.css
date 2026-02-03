@@ -719,7 +719,14 @@ a:visited {
 }
 
 /* Responsive Design */
-/* Tree decorations are hidden on mobile devices via JavaScript */
+/* Hide tree decorations when browser window is too small (desktop) */
+@media (max-width: 1075px) {
+    .left-border-decoration,
+    .right-border-decoration {
+        display: none;
+    }
+}
+/* Tree decorations are also hidden on mobile devices via JavaScript */
 
 @media (max-width: 768px) {
 
