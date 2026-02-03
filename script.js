@@ -121,28 +121,52 @@ function fixMobileSafariViewport() {
     function setHeight() {
         // Use window.innerHeight which accounts for browser UI
         const vh = window.innerHeight * 0.7;
-        leftBorder.style.height = vh + 'px';
+        leftBorder.style.setProperty('height', vh + 'px', 'important');
+        // Ensure it's always at the bottom
+        leftBorder.style.setProperty('bottom', '0px', 'important');
     }
     
-    // Set initial height
+    // Set initial height with a small delay to ensure viewport is stable
+    setTimeout(setHeight, 100);
     setHeight();
     
     // Update on resize and orientation change
-    window.addEventListener('resize', setHeight);
-    window.addEventListener('orientationchange', setHeight);
+    window.addEventListener('resize', () => {
+        setTimeout(setHeight, 50);
+    });
+    window.addEventListener('orientationchange', () => {
+        setTimeout(setHeight, 200);
+    });
     
-    // For iOS Safari, also listen to scroll events which can trigger viewport changes
-    let lastHeight = window.innerHeight;
-    window.addEventListener('scroll', () => {
-        if (Math.abs(window.innerHeight - lastHeight) > 50) {
-            lastHeight = window.innerHeight;
-            setHeight();
+    // For iOS Safari, listen to scroll and touch events which can trigger viewport changes
+    let ticking = false;
+    function updateOnScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                setHeight();
+                ticking = false;
+            });
+            ticking = true;
         }
-    }, { passive: true });
+    }
+    
+    window.addEventListener('scroll', updateOnScroll, { passive: true });
+    window.addEventListener('touchmove', updateOnScroll, { passive: true });
+    
+    // Also update when the page becomes visible (user returns to tab)
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            setTimeout(setHeight, 100);
+        }
+    });
 }
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', fixMobileSafariViewport);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fixMobileSafariViewport);
+} else {
+    fixMobileSafariViewport();
+}
 
 // Console welcome message
 console.log('%c💚 Sophie & Greg\'s Wedding 💚', 'color: #005229; font-size: 18px; font-weight: bold;');

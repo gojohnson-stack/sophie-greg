@@ -40,14 +40,14 @@ h1, h2, h3, h4 {
 .left-border-decoration {
     position: fixed;
     left: 0;
-    bottom: 0;
+    bottom: 0 !important;
     height: 70vh;
-    height: 70dvh; /* Dynamic viewport height for mobile browsers - accounts for browser UI */
     width: auto;
     z-index: 9999;
     pointer-events: none;
     object-fit: cover;
     object-position: left bottom;
+    /* Mobile Safari fix - JavaScript will override height with pixels */
 }
 
 /* Base Link Styles - Applies to all links unless overridden */
