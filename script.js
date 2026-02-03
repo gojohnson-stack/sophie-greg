@@ -122,8 +122,19 @@ function fixMobileSafariViewport() {
         // Use window.innerHeight which accounts for browser UI
         const vh = window.innerHeight * 0.7;
         leftBorder.style.setProperty('height', vh + 'px', 'important');
-        // Ensure it's always at the bottom
-        leftBorder.style.setProperty('bottom', '0px', 'important');
+        
+        // Detect if we're on iOS Safari
+        const isIOSSafari = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        
+        if (isIOSSafari) {
+            // For iOS Safari, the image needs to sit flush with the bottom
+            // The constant gap suggests we need a small negative offset
+            // Try -2px to eliminate the gap (adjust this value if needed)
+            leftBorder.style.setProperty('bottom', '-2px', 'important');
+        } else {
+            // For other browsers, position at the bottom
+            leftBorder.style.setProperty('bottom', '0px', 'important');
+        }
     }
     
     // Set initial height with a small delay to ensure viewport is stable
