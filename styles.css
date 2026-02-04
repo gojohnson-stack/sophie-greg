@@ -828,6 +828,20 @@ a:visited {
     .lodging-images {
         grid-template-columns: 1fr;
         max-width: 100%;
+        width: 100%;
+    }
+    
+    .lodging-image-wrapper {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+    
+    .lodging-image-wrapper img {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain;
     }
 
     .lodging-options {
@@ -840,7 +854,7 @@ a:visited {
 
     .google-form {
         height: 50vh;
-        min-height: 400px;
+        min-height: 330px;
     }
 }
 
