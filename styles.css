@@ -209,6 +209,16 @@ a:visited {
     box-shadow: 0 2px 4px rgba(0, 82, 41, 0.2);
 }
 
+.nav-link[href="#rsvp"].active {
+    background-color: var(--white);
+    color: var(--primary-text);
+}
+
+.nav-link[href="#rsvp"].active::after {
+    display: block;
+    width: 100%;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -332,11 +342,6 @@ a:visited {
     background: var(--white);
     padding: 2rem;
     border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-}
-
-.detail-card:hover {
-    box-shadow: 0 4px 12px var(--shadow);
 }
 
 .detail-card-link {
@@ -366,6 +371,22 @@ a:visited {
     color: var(--primary-text);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
+}
+
+.map-icon {
+    margin-left: 0.5rem;
+    display: inline-block;
+    vertical-align: baseline;
+    line-height: 1;
+}
+
+.map-icon svg {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: baseline;
+    position: relative;
+    top: 3px;
 }
 
 .detail-card p {
@@ -412,11 +433,6 @@ a:visited {
     padding: 1.5rem;
     background: var(--bg-color);
     border-left: 3px solid var(--primary-text);
-    transition: all 0.3s ease;
-}
-
-.schedule-item:hover {
-    box-shadow: 0 2px 8px var(--shadow);
 }
 
 .schedule-time {
@@ -664,7 +680,7 @@ a:visited {
 }
 
 .rsvp-form-container {
-    max-width: 800px;
+    max-width: 740px;
     margin: 0 auto;
     background: var(--white);
     padding: 2rem;
@@ -673,13 +689,14 @@ a:visited {
 
 .google-form {
     width: 100%;
-    min-height: 1200px;
+    height: 50vh;
+    min-height: 300px;
     border: none;
 }
 
 /* Footer */
 .footer {
-    padding: 3rem 0;
+    padding: 0.5rem 0;
     background: var(--white);
     border-top: 1px solid var(--border-color);
     text-align: center;
@@ -822,7 +839,8 @@ a:visited {
     }
 
     .google-form {
-        min-height: 1000px;
+        height: 50vh;
+        min-height: 400px;
     }
 }
 
