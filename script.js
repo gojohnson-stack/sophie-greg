@@ -112,21 +112,23 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Hide tree decorations on mobile devices
+// Hide tree decorations on mobile devices; show again when resizing back to desktop
 function hideTreesOnMobile() {
     const leftTree = document.querySelector('.left-border-decoration');
     const rightTree = document.querySelector('.right-border-decoration');
     
     if (!leftTree || !rightTree) return;
     
-    // Detect mobile devices
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-                     (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) ||
-                     ('ontouchstart' in window);
+    // Detect mobile devices (user agent only - let CSS media query handle narrow windows)
+    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
-    if (isMobile) {
+    if (isMobileDevice) {
         leftTree.style.display = 'none';
         rightTree.style.display = 'none';
+    } else {
+        // Desktop: remove inline display so CSS (and media query) control visibility
+        leftTree.style.display = '';
+        rightTree.style.display = '';
     }
 }
 

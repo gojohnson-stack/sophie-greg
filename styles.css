@@ -15,7 +15,7 @@
     --white: #ffffff;
     --shadow: rgba(0, 82, 41, 0.08);
     --shadow-hover: rgba(0, 82, 41, 0.12);
-    --tree-decoration-height: min(80vh, 80vw);
+    --tree-decoration-height: min(80vh, 40vw);
 }
 
 html {
@@ -333,7 +333,7 @@ a:visited {
 /* Details Section */
 .details-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -737,7 +737,7 @@ a:visited {
 
 /* Responsive Design */
 /* Hide tree decorations when browser window is too small (desktop) */
-@media (max-width: 1075px) {
+@media (max-width: 800px) {
     .left-border-decoration,
     .right-border-decoration {
         display: none;
